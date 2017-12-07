@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Grupo</th>
+            <th>Sexo</th>
+            <th>E-mail</th>
+            <th>CURP</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Modificaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alumno of alumnoArreglo; let i = index" [id]="i" (click)="regresarDatos(i)">
+            <td>{{alumno.nombre}}</td>
+            <td>{{alumno.paterno}}</td>
+            <td>{{alumno.materno}}</td>
+            <td>{{alumno.grupo}} </td>
+            <td *ngIf="alumno.sexo === 'F'">Femenino</td>
+            <td *ngIf="alumno.sexo === 'M'">Masculino</td>
+            <td>{{alumno.email}} </td>
+            <td>{{alumno.curp}}</td>
+            <td>{{alumno.fechaNacimiento}} </td>
+            <td class="text-center">
+              <a class="glyphicon glyphicon-pencil" aria-hidden="true" (click)="borrarAlumno(alumno, alumno.id)" [routerLink]="['/editar-alumno/',alumno.id]"></a>
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" (click)="borrarAlumno(alumno, alumno.id)"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
